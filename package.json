@@ -1,0 +1,23 @@
+{
+  "name": "projectforge",
+  "version": "1.0.0",
+  "description": "\"An organizational app for developer's backlog to keep all your notes, journals, templates, and documentation in one place so you can focus on the build, not the organization\"",
+  "homepage": "https://github.com/ProjectForge-Org-App/ProjectForge#readme",
+  "bugs": {
+    "url": "https://github.com/ProjectForge-Org-App/ProjectForge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectForge-Org-App/ProjectForge.git"
+  },
+  "license": "ISC",
+  "author": "Team Charizard",
+  "type": "ESM 2022",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "vite": "^6.3.5"
+  }
+}
