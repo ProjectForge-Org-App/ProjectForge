@@ -12,3 +12,8 @@ export interface ProjectForm extends Document {
   startDate: string;
   endDate: string;
 }
+
+export interface UserType extends Document {
+  username: string;
+  password: string;
+}
