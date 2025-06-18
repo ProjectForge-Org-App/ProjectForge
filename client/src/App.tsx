@@ -1,7 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/login/login';
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/navbar.tsx';
+import NewProjectForm from './components/newProjectPage/newProjectPage.tsx'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Login />} />
+        <Route path="/projects/new" element={<NewProjectForm />} />
       </Routes>
     </>
   );

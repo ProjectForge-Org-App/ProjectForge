@@ -1,0 +1,96 @@
+.background {
+    background-color: #2E2E2E;
+    color: #F5F5F5;
+}
+
+.formContainer {
+    padding: 1.5rem;
+    max-width: 40rem;
+    margin: 0 auto; 
+}
+
+.formTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .inputField {
+    width: 100%;
+    background-color: #5A6772;
+    border: 1px solid #D9534F;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #F5F5F5;
+  }
+
+  .inputField:focus {
+    outline: none; 
+    border-color: #E3B23C; 
+    box-shadow: 0 0 0 2px rgba(227, 178, 60, 0.3);
+  }
+
+  .techButton {
+    border: 1px solid #D9534F;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  .techButtonSelected {
+    background-color: #E3B23C;;
+    color: #5A6772;
+  }
+
+  .timelineContainer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .actionButtons:hover {
+    background-color: ;
+  }
+
+  .actionButton {
+    background-color: #D9534F; 
+    color: #F5F5F5; 
+    border: 1px solid #F5F5F5; 
+    padding: 0.5rem 1rem; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+
+  .actionButton:hover {
+    background-color: #E3B23C; 
+    color: #2E2E2E; 
+    transition: all 0.3s ease; 
+    border: 1px solid #5A6772;
+}
+
+  /* 
+Charcoal Gray
+#2E2E2E
+Background, text, primary dark
+
+Forge Ember
+#D9534F
+Accent buttons, highlights, calls to action
+
+Anvil Steel
+#5A6772
+Secondary background, borders, UI elements (cool gray-blue)
+
+Molten Gold
+#E3B23C
+Highlights, icons, subtle glows
+
+Ash White
+#F5F5F5
+Background for light areas, text on dark backgrounds */
