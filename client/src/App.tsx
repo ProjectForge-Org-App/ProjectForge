@@ -2,8 +2,9 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/login/login';
 import Navbar from './components/navbar/navbar.tsx';
-import NewProjectForm from './components/newProjectPage/newProjectPage.tsx'
-import HeroPage from './components/heroPage/heroPage.tsx'
+import NewProjectForm from './components/newProjectPage/newProjectPage.tsx';
+import HeroPage from './components/heroPage/heroPage.tsx';
+import Documentation from './components/documentation/documentation.tsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Login />} />
         <Route path="/projects/new" element={<NewProjectForm />} />
+        <Route path="/docs/new" element={<Documentation />} />
       </Routes>
     </>
   );
