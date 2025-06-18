@@ -1,15 +1,19 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/login/login';
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/navbar.tsx';
+import NewProjectForm from './components/newProjectPage/newProjectPage.tsx'
+import HeroPage from './components/heroPage/heroPage.tsx'
 
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
+        <Route path="/" element={<HeroPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Login />} />
+        <Route path="/projects/new" element={<NewProjectForm />} />
       </Routes>
     </>
   );
