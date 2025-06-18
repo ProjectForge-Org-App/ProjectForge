@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { DropdownItem } from '../../../types';
+import styles from './navbar.module.css';
 
-interface DropdownProps {
-  items: DropdownItem[];
-}
-
-const Dropdown: React.FC<DropdownProps> = ({ items }) => (
-  <ul className="dropdown">
+const Dropdown: React.FC<{ items: DropdownItem[] }> = ({ items }) => (
+  <div className={styles.dropdown}>
     {items.map((item, index) => (
-      <li key={index}>
-        <Link to={item.path}>{item.label}</Link>
-      </li>
+      <Link to={item.path} key={index}>
+        <button className={styles.dropdownbutton}>{item.label}</button>
+      </Link>
     ))}
-  </ul>
+  </div>
 );
 
 const Navbar: React.FC = () => {
@@ -36,30 +33,36 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="navbar">
-      <ul className="nav-list">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+    <div className={styles.navbar}>
+      <div className={styles.navrow}>
+        <div className={styles.navitemwrapper}>
+          <Link to="/">
+            <button className={styles.navbutton}>Home</button>
+          </Link>
+        </div>
 
-        <li
+        <div
+          className={styles.navitemwrapper}
           onMouseEnter={() => setActiveDropdown('all')}
           onMouseLeave={() => setActiveDropdown(null)}
-          onClick={() => toggleDropdown('all')}
         >
-          All Views
+          <button className={styles.navbutton} onClick={() => toggleDropdown('all')}>
+            All Views
+          </button>
           {activeDropdown === 'all' && <Dropdown items={allItems} />}
-        </li>
+        </div>
 
-        <li
+        <div
+          className={styles.navitemwrapper}
           onMouseEnter={() => setActiveDropdown('new')}
           onMouseLeave={() => setActiveDropdown(null)}
-          onClick={() => toggleDropdown('new')}
         >
-          New Forms
+          <button className={styles.navbutton} onClick={() => toggleDropdown('new')}>
+            New Forms
+          </button>
           {activeDropdown === 'new' && <Dropdown items={newItems} />}
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 };
