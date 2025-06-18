@@ -1,4 +1,4 @@
-import User from '../models/users';
+import User from '../models/users.js';
 import { Request, Response, NextFunction } from 'express';
 
 type LoginControllerType = {

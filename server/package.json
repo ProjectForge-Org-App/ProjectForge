@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --exec node --loader ts-node/esm src/server.ts",
-    "start": "node --loader ts-node/esm src/server.ts",
+    "dev": "nodemon --watch . --ext ts --exec \"node --loader ts-node/esm\" server.ts",
+    "start": "node --loader ts-node/esm server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -20,6 +20,11 @@
     "nodeman": "^1.1.2"
   },
   "devDependencies": {
-    "@types/node": "^24.0.3"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
