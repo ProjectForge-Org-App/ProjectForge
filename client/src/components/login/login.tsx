@@ -32,9 +32,8 @@ const Login: React.FC = () => {
       if (!res.ok) throw new Error(`${action} failed!`);
 
       const data = await res.json();
-      alert('You have successfully logged in.');
       console.log(`${action} success!`, data);
-      navigate('/');
+      navigate('/projects/new');
     } catch (err) {
       console.error(`Error in ${action}`, err);
     }

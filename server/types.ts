@@ -3,14 +3,20 @@ export interface Project extends Document {
   projectName: string;
 }
 
-export interface ProjectForm extends Document {
+export interface ProjectForm {
   projectId: number;
   projectName: string;
-  techStack: string;
-  mVPGoals: Record<string, string | null>;
-  stretchGoals: Record<string, string | null>;
-  startDate: string;
-  endDate: string;
+  language: string;
+  frontend: string;
+  backend: string;
+  database: string;
+  styling: string;
+  mvpGoals: string[];
+  stretchGoals: string[];
+  timeline: {
+    startDate: string;
+    endDate: string;
+  };
 }
 
 export interface UserType extends Document {
