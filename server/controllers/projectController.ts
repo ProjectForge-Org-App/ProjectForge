@@ -1,4 +1,4 @@
-import Project from '../models/projectform.js';
+import Project from '../models/projectModel.js';
 
 const projectController = {};
 projectController.findProject = async (req, res, next) => {

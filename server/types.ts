@@ -23,3 +23,8 @@ export interface UserType extends Document {
   username: string;
   password: string;
 }
+
+export interface DocumentationType {
+  docUrl: string;
+  docLink: string;
+}
