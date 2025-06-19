@@ -5,6 +5,7 @@ import Navbar from './components/navbar/navbar.tsx';
 import NewProjectForm from './components/newProjectPage/newProjectPage.tsx';
 import HeroPage from './components/heroPage/heroPage.tsx';
 import Documentation from './components/documentation/documentation.tsx';
+import ResumeBullets from './components/resumebullet/resumebullet.tsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<Login />} />
         <Route path="/projects/new" element={<NewProjectForm />} />
         <Route path="/docs/new" element={<Documentation />} />
+        <Route path="/resume-bullets/new" element={<ResumeBullets />} />
       </Routes>
     </>
   );

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './resumebullet.module.css';
 
+const autoGrow = (event: React.FormEvent<HTMLTextAreaElement>) => {
+  const textarea = event.currentTarget;
+  textarea.style.height = 'auto';
+  textarea.style.height = `${textarea.scrollHeight}px`;
+};
+
 const ResumeBullets: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState('');
   const [projects, setProjects] = useState<string[]>([]);
@@ -58,11 +64,13 @@ const ResumeBullets: React.FC = () => {
         </div>
 
         <div className={styles.textBox}>
-          <input
-            type="text"
+          <textarea
+            id="resume-point"
             placeholder="Resume point"
             value={resumePoint}
             onChange={(e) => setResumePoint(e.target.value)}
+            onInput={autoGrow}
+            rows={1}
           />
         </div>
 
