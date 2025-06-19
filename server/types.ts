@@ -28,3 +28,7 @@ export interface DocumentationType {
   docUrl: string;
   docLink: string;
 }
+
+export interface ResumeBulletType {
+  resumeBullet: string;
+}
