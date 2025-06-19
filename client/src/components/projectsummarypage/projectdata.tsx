@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import NewProjectForm from '../newProjectPage/newProjectPage';
-import Documentation from '../documentation/documentation';
-import ResumeBullets from '../resumebullet/resumebullet';
+// import { useNavigate } from 'react-router-dom';
 import styles from './project.module.css';
 
-const ProjectPage: React.FC = () => {
-  const [projectData, setProjectPage] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getProjectData(selectedProject);
-      setProjectPage(data);
-    }
-    fetchData();
-  }, []);
-
-  if (!projectData) return <div>Loading...</div>;
+const projectData: React.FC = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [bulletText, setBulletText] = useState('');
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>DevAI</h1>
-      <p className={styles.subtitle}>Project Overview File</p>
+    <div>
+      <h1 className={styles.title}>Project Sumamry Page</h1>
 
-      <NewProjectForm data={projectData.project} />
-      <Documentation data={projectData.documentation} />
-      <ResumeBullets data={projectData.resumeBullets} />
+      <div className={styles.projectName}></div>
 
-      <button className={styles.deleteButton}>Delete project</button>
+      <div className={styles.projectTemplate}>
+        <button className={styles.button}>Edit or Update</button>
+      </div>
+
+      <div className={styles.documentation}>
+        <button className={styles.button}>Edit or Update</button>
+      </div>
+
+      <div className={styles.resumebullet}>
+        {isEditing ? (
+          <textarea
+            value={bulletText}
+            onChange={(e) => setBulletText(e.target.value)}
+            onBlurCapture={() => setIsEditing(false)}
+            autoFocus
+          />
+        ) : (
+          <div onClick={() => setIsEditing(true)}>{bulletText}</div>
+        )}
+        <button className={styles.button} onClick={() => setIsEditing((prev) => !prev)}>
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
+      </div>
     </div>
   );
 };
 
-export default ProjectPage;
+export default projectData;

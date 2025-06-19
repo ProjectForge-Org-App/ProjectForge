@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from '../resumebullet/resumebullet.module.css';
 
 const Home = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<string[]>([]);
   const [selectedProject, setSelectedProject] = useState('');
   const navigate = useNavigate();
 
@@ -11,7 +12,9 @@ const Home = () => {
       try {
         const res = await fetch('/api/project');
         const data = await res.json();
-        setProjects(data); //  data = ['Project A', 'Project B', ...]
+        if (Array.isArray(data)) {
+          setProjects(data); //  data = ['Project A', 'Project B', ...]
+        }
       } catch (err) {
         console.error('Failed to fetch projects', err);
       }
@@ -27,20 +30,26 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <label>Select Project:</label>
-      <select id="project-select" value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
-        <option value="">--Select a project--</option>
-        {projects.map((name) => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
+    <div className={styles.container}>
+      <div className={styles.formCard}>
+        <h1 className={styles.title}>Select a Project</h1>
 
-      <button onClick={handleSearch} disabled={!selectedProject}>
-        Search
-      </button>
+        <label htmlFor="project-select">Project:</label>
+        <select id="project-select" value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
+          <option value="">-- Select a project --</option>
+          {projects.map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+
+        <div className={styles.button}>
+          <button onClick={handleSearch} disabled={!selectedProject}>
+            Search
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

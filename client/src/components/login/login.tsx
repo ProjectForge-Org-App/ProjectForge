@@ -33,7 +33,7 @@ const Login: React.FC = () => {
 
       const data = await res.json();
       console.log(`${action} success!`, data);
-      navigate('/projects/new');
+      navigate('/home');
     } catch (err) {
       console.error(`Error in ${action}`, err);
     }

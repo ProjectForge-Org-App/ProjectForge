@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import type { DropdownItem } from '../../../types';
 import styles from './navbar.module.css';
 
-
 const Dropdown: React.FC<{ items: DropdownItem[] }> = ({ items }) => (
   <div className={styles.dropdown}>
     {items.map((item, index) => (
@@ -37,7 +36,7 @@ const Navbar: React.FC = () => {
     <div className={styles.navbar}>
       <div className={styles.navrow}>
         <div className={styles.navitemwrapper}>
-          <Link to="/">
+          <Link to="/home">
             <button className={styles.navbutton}>Home</button>
           </Link>
         </div>
