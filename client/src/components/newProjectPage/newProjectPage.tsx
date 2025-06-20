@@ -46,6 +46,7 @@ export default function NewProjectForm() {
   return (
     <div className={styles.background}>
       <Navbar />
+      <div className={styles.gradientContainer}>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <h1 className={styles.formTitle}>Enter New Project Details</h1>
 
@@ -162,6 +163,7 @@ export default function NewProjectForm() {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 }
