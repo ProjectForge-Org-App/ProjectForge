@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Documenation from '../models/documentationModel.js';
 
-const createDocumentation = async (req, res) => {
+const createDocumentation = async (req: Request, res: Response) => {
   try {
     const { projectName, docUrl, docLink } = req.body;
 
@@ -19,9 +19,9 @@ const createDocumentation = async (req, res) => {
   }
 };
 
-const getAllDocumentation = async (req, res) => {
+const getAllDocumentation = async (req: Request, res: Response) => {
   try {
-    const docs = await Documentation.find();
+    const docs = await Documenation.find();
     res.status(200).json(docs);
   } catch (err) {
     console.error('Error fetching documentation:', err);
@@ -29,10 +29,10 @@ const getAllDocumentation = async (req, res) => {
   }
 };
 
-const getDocsByProject = async (req, res) => {
+const getDocsByProject = async (req: Request, res: Response) => {
   try {
     const { projectName } = req.params;
-    const docs = await Documentation.find({ projectName });
+    const docs = await Documenation.find({ projectName });
     res.status(200).json(docs);
   } catch (err) {
     console.error('Error fetching project documentation:', err);
