@@ -14,6 +14,7 @@ const Home = () => {
       try {
         const data = await fetchAllProjects();
         setProjects(data);
+        //console.log('projects', data);
       } catch (err) {
         console.error('Error loading projects:', err);
       }
@@ -32,9 +33,13 @@ const Home = () => {
       <div className={styles.formCard}>
         <h1 className={styles.title}>Select a Project</h1>
 
-        <label htmlFor="project-select">Project:</label>
-        <select id="project-select" value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
-          <option value="">-- Select a project --</option>
+        <label htmlFor='project-select'>Project:</label>
+        <select
+          id='project-select'
+          value={selectedProject}
+          onChange={(e) => setSelectedProject(e.target.value)}
+        >
+          <option value=''>-- Select a project --</option>
           {projects.map((project: HomeTypes) => (
             <option key={project._id} value={project.projectName}>
               {project.projectName}

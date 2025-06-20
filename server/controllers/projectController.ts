@@ -1,7 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import Project from '../models/projectModel.js';
 
-export const findProject = async (req: Request, res: Response): Promise<void> => {
+export const findProject = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const { name } = req.query;
     if (!name) {
@@ -22,11 +25,16 @@ export const findProject = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-export const getAllProjectNames = async (req: Request, res: Response): Promise<void> => {
+export const getAllProjectNames = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const projects = await Project.find({}, 'projectName');
     const projectNames = projects.map((p) => p.projectName);
-    res.status(200).json(projectNames);
+    //res.status(200).json(projectNames);
+    res.status(200).json(projects);
+    console.log('in controller', projects);
   } catch (err) {
     console.error('Failed to fetch project names:', err);
     res.status(500).json({ error: 'Server error fetching projects' });
