@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute.js';
 import projectRoutes from './routes/projectRoute.js';
-import { createProject } from './controllers/projecttemplateController.js';
+import documentationRoutes from './routes/documentationRoute.js';
 
 dotenv.config();
 
@@ -20,6 +20,9 @@ app.use('/', userRoute);
 
 //* Route for Project for Home Page dropdown menu
 app.use('/api/project', projectRoutes);
+
+//* Routes for documentation
+app.use('/api/docs', documentationRoutes);
 
 //* 404 not found error
 app.use((req: Request, res: Response) => {

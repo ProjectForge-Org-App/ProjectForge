@@ -1,9 +1,11 @@
 import express from 'express';
-import documentationController from '../controllers/documentationController.js';
+import { DocumentationType } from '../types.js';
+import * as documentationController from '../controllers/documentationController.js';
 
 const router = express.Router();
 
-router.post('/documentation/new');
-router.get('/documentation');
+router.post('/', documentationController.createDocumentation);
+router.get('/', documentationController.getAllDocumentation);
+router.get('/:projectName', documentationController.getDocsByProject);
 
 export default router;

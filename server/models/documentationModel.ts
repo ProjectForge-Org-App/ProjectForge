@@ -6,6 +6,6 @@ const DocumentationSchema = new Schema<DocumentationType>({
   docUrl: { type: String, required: true },
 });
 
-const Documenation = mongoose.model<DocumentationType>('documentation', DocumentationSchema);
+const Documentation = mongoose.model<DocumentationType>('documentation', DocumentationSchema);
 
-export default Documenation;
+export default Documentation;
