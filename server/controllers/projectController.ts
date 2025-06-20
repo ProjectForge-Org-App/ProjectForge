@@ -32,7 +32,9 @@ export const getAllProjectNames = async (
   try {
     const projects = await Project.find({}, 'projectName');
     const projectNames = projects.map((p) => p.projectName);
-    res.status(200).json(projectNames);
+    //res.status(200).json(projectNames);
+    res.status(200).json(projects);
+    console.log('in controller', projects);
   } catch (err) {
     console.error('Failed to fetch project names:', err);
     res.status(500).json({ error: 'Server error fetching projects' });

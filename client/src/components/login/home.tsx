@@ -12,6 +12,7 @@ const Home = () => {
         const res = await fetch('/api/project');
         const data = await res.json();
         setProjects(data); //  data = ['Project A', 'Project B', ...]
+        console.log(data);
       } catch (err) {
         console.error('Failed to fetch projects', err);
       }

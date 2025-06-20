@@ -1,6 +1,7 @@
 import type { ProjectTemplate } from '../types';
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/project';
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/project';
 
 export const createProject = async (formData: ProjectTemplate) => {
   const res = await fetch(`${API_BASE_URL}`, {
@@ -16,6 +17,7 @@ export const createProject = async (formData: ProjectTemplate) => {
 export const fetchAllProjects = async () => {
   const res = await fetch(`${API_BASE_URL}/all`);
   if (!res.ok) throw new Error('Failed to fetch project list');
+  console.log('in api file', res);
   return res.json();
 };
 
