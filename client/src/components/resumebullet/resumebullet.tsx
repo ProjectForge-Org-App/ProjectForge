@@ -43,16 +43,21 @@ const ResumeBullets: React.FC = () => {
       <div className={styles.formCard}>
         <h1 className={styles.title}>Add Resume Reminder Points</h1>
         <h3 className={styles.subtitle}>
-          Remember to document information for resume bullet points on specific projects.
+          Remember to document information for resume bullet points on specific
+          projects.
         </h3>
 
         <div>
-          <label htmlFor="project-select">Select a project:</label>
-          <select id="project-select" value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
-            <option value="">-- Select a project --</option>
+          <label htmlFor='project-select'>Select a project:</label>
+          <select
+            id='project-select'
+            value={selectedProject}
+            onChange={(e) => setSelectedProject(e.target.value)}
+          >
+            <option value=''>-- Select a project --</option>
             {projects.map((project) => (
-              <option key={project} value={project}>
-                {project}
+              <option key={project._id} value={project.projectName}>
+                {project.projectName}
               </option>
             ))}
           </select>
@@ -60,8 +65,8 @@ const ResumeBullets: React.FC = () => {
 
         <div className={styles.textBox}>
           <textarea
-            id="resume-point"
-            placeholder="Resume point"
+            id='resume-point'
+            placeholder='Resume point'
             value={resumePoint}
             onChange={(e) => setResumePoint(e.target.value)}
             onInput={autoGrow}
