@@ -3,8 +3,17 @@
   line-height: 1.5;
   font-weight: 400;
   background-color: #2e2e2e;
+}
 
-  /* color-scheme: light dark;
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+/* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 

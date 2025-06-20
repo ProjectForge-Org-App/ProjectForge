@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './documentation.module.css';
 import { fetchAllProjects } from '../../api';
+import type { HomeTypes } from '../../../types';
 
 const Documentation: React.FC = () => {
-  const [projects, setProjects] = useState<string[]>([]);
+  const [projects, setProjects] = useState<HomeTypes[]>([]);
   const [selectedProject, setSelectedProject] = useState('');
   const [docUrl, setDocUrl] = useState('');
   const [linkName, setLinkName] = useState('');
@@ -45,8 +46,8 @@ const Documentation: React.FC = () => {
             <select value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
               <option value="">-- Select a project --</option>
               {projects.map((project) => (
-                <option key={project} value={project}>
-                  {project}
+                <option key={project._id} value={project.projectName}>
+                  {project.projectName}
                 </option>
               ))}
             </select>
