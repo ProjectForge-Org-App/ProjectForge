@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute.js';
+import projectRoutes from './routes/projectemplateRoute.js';
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ app.use(express.json());
 
 //* Routes
 app.use('/', userRoute);
+
+//* Route for Project Template (create a project);
+app.use('/api/projects', projectRoutes);
 
 //* 404 not found error
 app.use((req: Request, res: Response) => {
