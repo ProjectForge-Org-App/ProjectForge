@@ -1,14 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/*  font Section   */
+
+.cinzel {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*  Styling Section   */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url("/bgImage.jpeg") no-repeat center center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #2e2e2e;
-  padding: 20px;
 }
 
 .formCard {
-  background: linear-gradient(to bottom right, rgba(90, 103, 114, 0.6), #2e2e2e);
+  background: linear-gradient(to bottom right, #5a6772, #2e2e2e);
   color: #f5f5f5;
   border: 1px solid #5a6772;
   border-radius: 24px;
@@ -17,6 +56,9 @@
   width: 100%;
   max-width: 500px;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .title {
@@ -24,13 +66,20 @@
   font-size: 28px;
   margin-bottom: 10px;
   color: #f5f5f5;
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .subtitle {
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 30px;
   color: #cccccc;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 /* Dropdown */
@@ -45,6 +94,9 @@ select {
   border: 1px solid #5a6772;
   margin-bottom: 24px;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 select:focus {
@@ -59,6 +111,9 @@ select:focus {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 24px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .textBox input {
@@ -70,6 +125,9 @@ select:focus {
   background-color: #ffffff;
   color: #2e2e2e;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .textBox input:focus {
@@ -87,6 +145,9 @@ select:focus {
 .button {
   display: flex;
   justify-content: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .button button {

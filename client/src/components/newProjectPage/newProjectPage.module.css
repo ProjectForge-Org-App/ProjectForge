@@ -10,18 +10,6 @@
   font-style: normal;
 }
 
-.lato-thin {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.lato-light {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
 .lato-regular {
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -32,42 +20,6 @@
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: normal;
-}
-
-.lato-black {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.lato-thin-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.lato-light-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.lato-regular-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.lato-bold-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.lato-black-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: italic;
 }
 
 /*  Styling Section   */
@@ -110,15 +62,19 @@ html, body {
   border: 1px solid #d9534f;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #f5f5f5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
+  padding: 10px 14px;
+  border-radius: 24px;
+  color: #f5f5f5; /* text the user types */
+  background-color: transparent;
 }
 
 .leftColumn .inputField {
   width: 100%;
   max-width: 500px;
+
 }
 
 .inputField:focus {
@@ -170,6 +126,7 @@ html, body {
   font-family: "Lato", sans-serif;
   font-weight: 900;
   font-style: normal;
+  padding-right: 30px;
 }
 
 .formGroupHorizontal {
@@ -182,6 +139,7 @@ html, body {
   flex-shrink: 0;
   width: 150px;
   text-align: left;
+  color: #f5f5f5;
 }
 
 .centeredLabel {
@@ -238,4 +196,6 @@ html, body {
   font-size: 4rem;
   margin-bottom: 1rem;
   color: #f5f5f5;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
+
