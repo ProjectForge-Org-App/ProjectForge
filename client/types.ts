@@ -38,4 +38,9 @@ export interface ProjectSummaryPageProps {
 export type HomeTypes = {
   _id: string;
   projectName: string;
+  mvpGoals: string[];
+  stretchGoals: string[];
+  frontend: string;
+  backend: string;
+  database: string;
 };
