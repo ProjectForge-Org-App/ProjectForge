@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../resumebullet/resumebullet.module.css';
+import styles from './home.module.css';
 import type { HomeTypes } from '../../../types';
+import { fetchAllProjects } from '../../api';
 
 const Home = () => {
   const [projects, setProjects] = useState<HomeTypes[]>([]);
@@ -9,19 +10,15 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const getProjects = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/project');
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          setProjects(data); //  data = ['Project A', 'Project B', ...]
-        }
+        const data = await fetchAllProjects();
+        setProjects(data);
       } catch (err) {
-        console.error('Failed to fetch projects', err);
+        console.error('Error loading projects:', err);
       }
     };
-
-    fetchProjects();
+    getProjects();
   }, []);
 
   const handleSearch = () => {

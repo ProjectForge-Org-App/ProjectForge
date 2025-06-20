@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './newProjectPage.module.css';
 import Navbar from '../navbar/navbar';
+import { createProject } from '../../api';
 
 export default function NewProjectForm() {
   const [projectName, setProjectName] = useState('');
@@ -16,40 +17,21 @@ export default function NewProjectForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const formData = {
-      projectName,
-      language,
-      frontend,
-      backend,
-      database,
-      styling,
-      mvpGoals: mvpTasks,
-      stretchGoals: stretchTasks,
-      timeline: {
-        startDate,
-        endDate,
-      },
-    };
-
     try {
-      const response = await fetch('http://localhost:3000/api/project', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const result = await createProject({
+        projectName,
+        language,
+        frontend,
+        backend,
+        database,
+        styling,
+        mvpGoals: mvpTasks,
+        stretchGoals: stretchTasks,
+        timeline: { startDate: new Date(startDate), endDate: new Date(endDate) },
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit project');
-      }
-
-      const result = await response.json();
-      console.log('✅ Project submitted successfully:', result);
-    } catch (error) {
-      console.error('❌ Error submitting project:', error);
-      alert('There was a problem submitting your project. Please try again.');
+      console.log('✅ Project submitted:', result);
+    } catch (err) {
+      console.error(err);
     }
   };
 
