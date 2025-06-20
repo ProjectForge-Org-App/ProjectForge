@@ -33,7 +33,7 @@ export default function NewProjectForm() {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/api/projects', {
+      const response = await fetch('http://localhost:3000/api/project', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

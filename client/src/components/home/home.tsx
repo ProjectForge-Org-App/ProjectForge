@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../resumebullet/resumebullet.module.css';
+import type { HomeTypes } from '../../../types';
 
 const Home = () => {
-  const [projects, setProjects] = useState<string[]>([]);
+  const [projects, setProjects] = useState<HomeTypes[]>([]);
   const [selectedProject, setSelectedProject] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch('/api/project');
+        const res = await fetch('http://localhost:3000/api/project');
         const data = await res.json();
         if (Array.isArray(data)) {
           setProjects(data); //  data = ['Project A', 'Project B', ...]
@@ -37,9 +38,9 @@ const Home = () => {
         <label htmlFor="project-select">Project:</label>
         <select id="project-select" value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
           <option value="">-- Select a project --</option>
-          {projects.map((name) => (
-            <option key={name} value={name}>
-              {name}
+          {projects.map((project: HomeTypes) => (
+            <option key={project._id} value={project.projectName}>
+              {project.projectName}
             </option>
           ))}
         </select>
