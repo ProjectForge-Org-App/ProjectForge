@@ -111,9 +111,6 @@ select:focus {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 24px;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .textBox input {
@@ -125,9 +122,6 @@ select:focus {
   background-color: #ffffff;
   color: #2e2e2e;
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .textBox input:focus {
@@ -187,6 +181,9 @@ select:focus {
   box-sizing: border-box;
   resize: none;
   overflow: hidden;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .textBox textarea:focus {
