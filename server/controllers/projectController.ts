@@ -1,17 +1,40 @@
-import Project from '../models/projectform ';
+import { Request, Response, NextFunction } from 'express';
+import Project from '../models/projectModel.js';
 
-const userController = {};
-projectController.findProject = async (req, res, next) => {
-  const { name } = req.query;
-  if (!name) return res.status(400).json({ error: 'Missing project name' });
-
+export const findProject = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
-    const data = await Project.findOne({ name });
-    if (!data) return res.status(404).json({ error: 'Project not found' });
+    const { name } = req.query;
+    if (!name) {
+      res.status(400).json({ error: 'Missing project name' });
+      return;
+    }
 
-    res.locals.project = data;
+    const data = await Project.findOne({ projectName: name });
+    if (!data) {
+      res.status(404).json({ error: 'Project not found' });
+      return;
+    }
+
+    res.status(200).json(data);
   } catch (err) {
-    console.error(err);
+    console.error('Error in findProject:', err);
     res.status(500).json({ error: 'Server error' });
+  }
+};
+
+export const getAllProjectNames = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const projects = await Project.find({}, 'projectName');
+    const projectNames = projects.map((p) => p.projectName);
+    res.status(200).json(projectNames);
+  } catch (err) {
+    console.error('Failed to fetch project names:', err);
+    res.status(500).json({ error: 'Server error fetching projects' });
   }
 };

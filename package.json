@@ -17,10 +17,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm run dev",
-    "server": "cd server && nodemon --exec node --loader ts-node/esm src/server.ts",
+    "server": "cd server && nodemon --watch . --ext ts --exec \"node --loader ts-node/esm\" server.ts",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "vite": "^6.3.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

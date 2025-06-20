@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2e2e2e;
+  padding: 20px;
+}
+
+.formCard {
+  background: linear-gradient(to bottom right, rgba(90, 103, 114, 0.6), #2e2e2e);
+  color: #f5f5f5;
+  border: 1px solid #5a6772;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #f5f5f5;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #cccccc;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 24px;
+  background-color: #2e2e2e;
+  color: #f5f5f5;
+  border: 1px solid #e3b23c;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: #e3b23c;
+  box-shadow: 0 0 0 2px rgba(227, 178, 60, 0.3);
+}
+
+option {
+  background-color: #2e2e2e;
+  color: #f5f5f5;
+}
+
+.textBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.textBox input {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #5a6772;
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #2e2e2e;
+  box-sizing: border-box;
+}
+
+.textBox input:focus {
+  outline: none;
+  border-color: #e3b23c;
+  box-shadow: 0 0 0 2px rgba(227, 178, 60, 0.3);
+}
+
+.textBox span {
+  color: #f5f5f5;
+  font-weight: bold;
+}
+
+.textBox textarea {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #5a6772;
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #2e2e2e;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+}
+
+.textBox textarea:focus {
+  outline: none;
+  border-color: #e3b23c;
+  box-shadow: 0 0 0 2px rgba(227, 178, 60, 0.3);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.button button {
+  background-color: #d9534f;
+  color: #f5f5f5;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button button:hover {
+  background-color: #e3b23c;
+  color: #2e2e2e;
+}
+
+@media (max-width: 480px) {
+  .textBox {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .textBox span {
+    display: none;
+  }
+}

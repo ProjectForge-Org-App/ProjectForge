@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.cinzel {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2e2e2e;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.navrow {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 16px;
+  align-items: center;
+}
+
+.navitem {
+  position: relative;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: inline-block;
+  color: #f5f5f5;
+}
+
+.navitem:hover {
+  background-color: #5a6772;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2e2e2e; /* Charcoal Gray */
+  padding: 8px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.dropdownbutton {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 16px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  color: #f5f5f5;
+}
+
+.dropdownbutton:hover {
+  background-color: #e3b23c;
+  color: #2E2E2E;
+}
+
+.navbutton {
+  background-color: #d9534f;
+  color: #f5f5f5;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navbutton:hover {
+  background-color: #e3b23c;
+  color: #2e2e2e;
+}
+
+.navitemwrapper {
+  position: relative;
+  display: inline-block;
+}
