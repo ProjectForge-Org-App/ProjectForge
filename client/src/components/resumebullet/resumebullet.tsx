@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './resumebullet.module.css';
+import { fetchAllProjects } from '../../api';
 
 const autoGrow = (event: React.FormEvent<HTMLTextAreaElement>) => {
   const textarea = event.currentTarget;
@@ -12,25 +13,19 @@ const ResumeBullets: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState('');
   const [projects, setProjects] = useState<string[]>([]);
   const [resumePoint, setResumePoint] = useState('');
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const loadProjects = async () => {
       try {
-        const res = await fetch('/api/project');
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          setProjects(data);
-        } else {
-          console.error('Invalid project data format');
-        }
+        const data = await fetchAllProjects(); //* Use helper from api.ts
+        setProjects(data); //* expects an array
       } catch (err) {
         console.error('Failed to fetch projects', err);
       }
     };
 
-    fetchProjects();
+    loadProjects();
   }, []);
 
   const handleSearch = () => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './documentation.module.css';
+import { fetchAllProjects } from '../../api';
 
 const Documentation: React.FC = () => {
   const [projects, setProjects] = useState<string[]>([]);
@@ -10,17 +11,16 @@ const Documentation: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const loadProjects = async () => {
       try {
-        const res = await fetch('/api/project');
-        const data = await res.json();
-        setProjects(data);
+        const data = await fetchAllProjects(); //* using helper from api.ts
+        setProjects(data); //* data is expected to be an array of strings
       } catch (err) {
         console.error('Failed to fetch projects', err);
       }
     };
 
-    fetchProjects();
+    loadProjects();
   }, []);
 
   const handleSearch = () => {
@@ -51,7 +51,6 @@ const Documentation: React.FC = () => {
               ))}
             </select>
           </label>
-          f
         </div>
 
         <div className={styles.textBox}>

@@ -5,6 +5,7 @@ export interface DropdownItem {
 }
 
 export interface ProjectTemplate {
+  _id: string;
   projectName: string;
   language: string;
   frontend: string;
