@@ -20,7 +20,7 @@ export const fetchAllProjects = async () => {
 };
 
 export const fetchProjectByName = async (name: string) => {
-  const res = await fetch(`${API_BASE_URL}?name=${encodeURIComponent(name)}`);
+  const res = await fetch(`${API_BASE_URL}/find?name=${encodeURIComponent(name)}`);
   if (!res.ok) throw new Error('Project not found');
   return res.json();
 };

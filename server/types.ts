@@ -25,10 +25,11 @@ export interface UserType extends Document {
 }
 
 export interface DocumentationType {
-  docUrl: string;
+  _id?: string;
+  projectName: string;
   docLink: string;
+  docUrl: string;
 }
-
 export interface ResumeBulletType {
   resumeBullet: string;
 }

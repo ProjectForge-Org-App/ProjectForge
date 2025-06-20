@@ -21,7 +21,7 @@ function App() {
         <Route path="/projects/new" element={<NewProjectForm />} />
         <Route path="/docs/new" element={<Documentation />} />
         <Route path="/resume-bullets/new" element={<ResumeBullets />} />
-        <Route path="/project" element={<ProjectSummaryPage projects={[]} documentation={[]} resumeBullets={[]} />} />
+        <Route path="/project/:projectName" element={<ProjectSummaryPage />} />
       </Routes>
     </>
   );
