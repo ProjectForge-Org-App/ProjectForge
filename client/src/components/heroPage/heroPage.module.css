@@ -1,73 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 /*  font Section   */
 
 .cinzel {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
 }
 
 .lato-thin {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 100;
   font-style: normal;
 }
 
 .lato-light {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
 .lato-regular {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .lato-bold {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 .lato-black {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 900;
   font-style: normal;
 }
 
 .lato-thin-italic {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 100;
   font-style: italic;
 }
 
 .lato-light-italic {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 300;
   font-style: italic;
 }
 
 .lato-regular-italic {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
 .lato-bold-italic {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: italic;
 }
 
 .lato-black-italic {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 900;
   font-style: italic;
 }
@@ -95,13 +93,13 @@ body {
 }
 
 .backgroundVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .heroContent {
@@ -112,7 +110,7 @@ body {
 }
 
 .heroHeader {
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: "Uncial Antiqua", cursive;
   font-size: 8rem;
   margin-bottom: 1rem;
   color: #f5f5f5;
