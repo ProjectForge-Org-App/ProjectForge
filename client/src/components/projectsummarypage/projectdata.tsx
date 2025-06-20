@@ -1,34 +1,47 @@
-// ProjectSummaryPage.tsx
-import React, { useState } from 'react';
-import type { ProjectSummaryPageProps } from '../../../types';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import styles from './project.module.css';
+import { fetchProjectByName } from '../../api'; //
+import type { HomeTypes, DocumentationTemplate, ResumeTemplate } from '../../../types';
 
-const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, documentation, resumeBullets }) => {
+const ProjectSummaryPage: React.FC = () => {
+  const { projectName } = useParams();
+  const navigate = useNavigate();
+
+  const [project, setProject] = useState<HomeTypes | null>(null);
+  const [documentation, setDocumentation] = useState<DocumentationTemplate[]>([]);
+  const [resumeBullets, setResumeBullets] = useState<ResumeTemplate[]>([]);
+
   const [isEditingProject, setIsEditingProject] = useState(false);
   const [isEditingDocs, setIsEditingDocs] = useState(false);
   const [isEditingResume, setIsEditingResume] = useState(false);
 
-  const handleUpdateProject = () => {
-    console.log('Update project to DB');
-    setIsEditingProject(false);
-  };
+  useEffect(() => {
+    if (!projectName) {
+      navigate('/');
+      return;
+    }
 
-  const handleUpdateDocs = () => {
-    console.log('Update docs to DB');
-    setIsEditingDocs(false);
-  };
+    const loadProject = async () => {
+      try {
+        const data = await fetchProjectByName(decodeURIComponent(projectName));
+        setProject(data.project);
+        setDocumentation(data.documentation || []);
+        setResumeBullets(data.resumeBullets || []);
+      } catch (err) {
+        console.error('Error fetching project:', err);
+        navigate('/');
+      }
+    };
 
-  const handleAddResume = () => {
-    console.log('Add new resume bullet');
-  };
+    loadProject();
+  }, [projectName, navigate]);
 
-  const handleDeleteProject = () => {
-    console.log('Delete project');
-  };
+  if (!project) return <div className={styles.container}>Loading project...</div>;
 
   return (
     <div className={styles.container}>
-      {/* //* Project Section */}
+      {/* Project Section */}
       <div className={styles.formCard}>
         <h2 className={styles.title}>Project</h2>
         {isEditingProject ? (
@@ -48,7 +61,7 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
               </div>
             </div>
             <div className={styles.button}>
-              <button onClick={handleUpdateProject}>Save Project</button>
+              <button onClick={() => setIsEditingProject(false)}>Save Project</button>
             </div>
           </>
         ) : (
@@ -56,12 +69,17 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
             <div className={styles.cardRow}>
               <div className={styles.textBox}>
                 <span>MVP Specs</span>
+                <div>{project.mvpGoals.join(', ')}</div>
               </div>
               <div className={styles.textBox}>
                 <span>Stretch Specs</span>
+                <div>{project.stretchGoals.join(', ')}</div>
               </div>
               <div className={styles.textBox}>
                 <span>Tech Stack</span>
+                <div>
+                  {project.frontend}, {project.backend}, {project.database}
+                </div>
               </div>
             </div>
             <div className={styles.button}>
@@ -71,7 +89,7 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
         )}
       </div>
 
-      {/* //* Documentation Section */}
+      {/* Documentation Section */}
       <div className={styles.formCard}>
         <h2 className={styles.title}>Documentation</h2>
         {isEditingDocs ? (
@@ -84,7 +102,7 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
               </div>
             ))}
             <div className={styles.button}>
-              <button onClick={handleUpdateDocs}>Save Docs</button>
+              <button onClick={() => setIsEditingDocs(false)}>Save Docs</button>
             </div>
           </>
         ) : (
@@ -103,7 +121,7 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
         )}
       </div>
 
-      {/* //* Resume Section */}
+      {/* Resume Section */}
       <div className={styles.formCard}>
         <h2 className={styles.title}>Resume</h2>
         {isEditingResume ? (
@@ -134,12 +152,12 @@ const ProjectSummaryPage: React.FC<ProjectSummaryPageProps> = ({ project, docume
           </>
         )}
         <div className={styles.button}>
-          <button onClick={handleAddResume}>Add New Resume Bullet</button>
+          <button onClick={() => console.log('Add new resume bullet')}>Add New Resume Bullet</button>
         </div>
       </div>
 
       <div className={styles.button} style={{ justifyContent: 'flex-end' }}>
-        <button onClick={handleDeleteProject}>Delete Project</button>
+        <button onClick={() => console.log('Delete project')}>Delete Project</button>
       </div>
     </div>
   );

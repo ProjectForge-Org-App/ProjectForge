@@ -62,6 +62,12 @@ const Navbar: React.FC = () => {
           </button>
           {activeDropdown === 'new' && <Dropdown items={newItems} />}
         </div>
+
+        <div className={styles.navitemwrapper}>
+          <Link to="/project">
+            <button className={styles.navbutton}>Project View</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
