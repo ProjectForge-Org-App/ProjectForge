@@ -21,6 +21,7 @@ export interface ProjectTemplate {
 }
 
 export interface DocumentationTemplate {
+  projectName: string;
   docUrl: string;
   docLink: string;
 }

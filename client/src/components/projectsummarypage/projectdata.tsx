@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './project.module.css';
 import { fetchProjectByName } from '../../api'; //
-import type { HomeTypes, DocumentationTemplate, ResumeTemplate } from '../../../types';
+import type { ProjectTemplate, DocumentationTemplate, ResumeTemplate } from '../../../types';
 
 const ProjectSummaryPage: React.FC = () => {
   const { projectName } = useParams();
   const navigate = useNavigate();
 
-  const [project, setProject] = useState<HomeTypes | null>(null);
+  const [project, setProject] = useState<ProjectTemplate | null>(null);
   const [documentation, setDocumentation] = useState<DocumentationTemplate[]>([]);
   const [resumeBullets, setResumeBullets] = useState<ResumeTemplate[]>([]);
 
@@ -26,6 +26,8 @@ const ProjectSummaryPage: React.FC = () => {
       try {
         const data = await fetchProjectByName(decodeURIComponent(projectName));
         console.log('API returned:', data);
+        console.log('Documentation:', data.documentation);
+        console.log('Resume Bullets:', data.resumeBullets);
         setProject(data);
         setDocumentation(data.documentation || []);
         setResumeBullets(data.resumeBullets || []);
@@ -42,50 +44,175 @@ const ProjectSummaryPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Project Section */}
+      {/* PROJECT SECTION */}
       <div className={styles.formCard}>
         <h2 className={styles.title}>Project</h2>
-        {isEditingProject ? (
+        {!isEditingProject ? (
           <>
-            <div className={styles.cardRow}>
-              <div className={styles.textBox}>
-                <span>MVP Specs</span>
-                <textarea defaultValue={project.mvpGoals.join('\n')} />
+            <div className={styles.projectDetailsGrid}>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Project Name:</span>
+                <span className={styles.detailValue}>{project.projectName}</span>
               </div>
-              <div className={styles.textBox}>
-                <span>Stretch Specs</span>
-                <textarea defaultValue={project.stretchGoals.join('\n')} />
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Language:</span>
+                <span className={styles.detailValue}>{project.language}</span>
               </div>
-              <div className={styles.textBox}>
-                <span>Tech Stack</span>
-                <textarea defaultValue={`${project.frontend}, ${project.backend}, ${project.database}`} />
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Frontend:</span>
+                <span className={styles.detailValue}>{project.frontend}</span>
               </div>
-            </div>
-            <div className={styles.button}>
-              <button onClick={() => setIsEditingProject(false)}>Save Project</button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={styles.cardRow}>
-              <div className={styles.textBox}>
-                <span>MVP Specs</span>
-                <div>{project.mvpGoals.join(', ')}</div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Backend:</span>
+                <span className={styles.detailValue}>{project.backend}</span>
               </div>
-              <div className={styles.textBox}>
-                <span>Stretch Specs</span>
-                <div>{project.stretchGoals.join(', ')}</div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Database:</span>
+                <span className={styles.detailValue}>{project.database}</span>
               </div>
-              <div className={styles.textBox}>
-                <span>Tech Stack</span>
-                <div>
-                  {project.frontend}, {project.backend}, {project.database}
-                </div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Styling:</span>
+                <span className={styles.detailValue}>{project.styling}</span>
+              </div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>MVP Goals:</span>
+                <ul className={styles.detailList}>
+                  {project.mvpGoals.map((goal, i) => (
+                    <li key={i}>{goal}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Stretch Goals:</span>
+                <ul className={styles.detailList}>
+                  {project.stretchGoals.map((goal, i) => (
+                    <li key={i}>{goal}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.detailCard}>
+                <span className={styles.detailLabel}>Timeline:</span>
+                <span className={styles.detailValue}>
+                  {project.timeline?.startDate ? new Date(project.timeline.startDate).toLocaleDateString() : ''} –{' '}
+                  {project.timeline?.endDate ? new Date(project.timeline.endDate).toLocaleDateString() : ''}
+                </span>
               </div>
             </div>
             <div className={styles.button}>
               <button onClick={() => setIsEditingProject(true)}>Edit Project</button>
             </div>
+          </>
+        ) : (
+          <>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                // handle save here!
+                setIsEditingProject(false);
+              }}
+            >
+              <div className={styles.projectDetailsGrid}>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Project Name:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.projectName}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Language:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.language}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Frontend:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.frontend}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Backend:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.backend}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Database:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.database}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Styling:</span>
+                  <input
+                    type="text"
+                    defaultValue={project.styling}
+                    className={styles.inputField}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>MVP Goals:</span>
+                  <textarea
+                    defaultValue={project.mvpGoals.join('\n')}
+                    className={styles.inputField}
+                    rows={4}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Stretch Goals:</span>
+                  <textarea
+                    defaultValue={project.stretchGoals.join('\n')}
+                    className={styles.inputField}
+                    rows={4}
+                    // onChange={...}
+                  />
+                </div>
+                <div className={styles.detailCard}>
+                  <span className={styles.detailLabel}>Timeline:</span>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <input
+                      type="date"
+                      defaultValue={
+                        project.timeline?.startDate
+                          ? new Date(project.timeline.startDate).toISOString().split('T')[0]
+                          : ''
+                      }
+                      className={styles.inputField}
+                      // onChange={...}
+                    />
+                    <span>/</span>
+                    <input
+                      type="date"
+                      defaultValue={
+                        project.timeline?.endDate ? new Date(project.timeline.endDate).toISOString().split('T')[0] : ''
+                      }
+                      className={styles.inputField}
+                      // onChange={...}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.button}>
+                <button type="submit">Save Project</button>
+              </div>
+            </form>
           </>
         )}
       </div>

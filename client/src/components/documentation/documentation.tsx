@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './documentation.module.css';
 import { fetchAllProjects } from '../../api';
+import type { HomeTypes } from '../../../types';
 
 const Documentation: React.FC = () => {
-  const [projects, setProjects] = useState<string[]>([]);
+  const [projects, setProjects] = useState<HomeTypes[]>([]);
   const [selectedProject, setSelectedProject] = useState('');
   const [docUrl, setDocUrl] = useState('');
   const [linkName, setLinkName] = useState('');
