@@ -1,5 +1,6 @@
 import Project from '../models/projectform ';
 
+const userController = {};
 projectController.findProject = async (req, res, next) => {
   const { name } = req.query;
   if (!name) return res.status(400).json({ error: 'Missing project name' });
