@@ -38,15 +38,20 @@ const Documentation: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.formCard}>
         <h1 className={styles.title}>Add Documentation Links</h1>
-        <h3 className={styles.subtitle}>These can be used as a bookmark for your documentation on projects.</h3>
+        <h3 className={styles.subtitle}>
+          These can be used as a bookmark for your documentation on projects.
+        </h3>
 
         <div>
           <label>
-            <select value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
-              <option value="">-- Select a project --</option>
+            <select
+              value={selectedProject}
+              onChange={(e) => setSelectedProject(e.target.value)}
+            >
+              <option value=''>-- Select a project --</option>
               {projects.map((project) => (
-                <option key={project} value={project}>
-                  {project}
+                <option key={project._id} value={project.projectName}>
+                  {project.projectName}
                 </option>
               ))}
             </select>
@@ -54,11 +59,16 @@ const Documentation: React.FC = () => {
         </div>
 
         <div className={styles.textBox}>
-          <input type="text" placeholder="Document URL" value={docUrl} onChange={(e) => setDocUrl(e.target.value)} />
+          <input
+            type='text'
+            placeholder='Document URL'
+            value={docUrl}
+            onChange={(e) => setDocUrl(e.target.value)}
+          />
           <span>/</span>
           <input
-            type="text"
-            placeholder="Hyperlink Name"
+            type='text'
+            placeholder='Hyperlink Name'
             value={linkName}
             onChange={(e) => setLinkName(e.target.value)}
           />
