@@ -33,3 +33,8 @@ export interface ProjectSummaryPageProps {
   documentation: DocumentationTemplate[];
   resumeBullets: ResumeTemplate[];
 }
+
+export type HomeTypes = {
+  _id: string;
+  projectName: string;
+};

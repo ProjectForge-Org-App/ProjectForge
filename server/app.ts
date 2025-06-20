@@ -3,20 +3,26 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute.js';
-import projectRoutes from './routes/projectemplateRoute.js';
+import projectRoutes from './routes/projectRoute.js';
+import { createProject } from './controllers/projecttemplateController.js';
 
 dotenv.config();
 
 const app = express();
+console.log('🔧 app.ts loaded');
 
 app.use(cors());
 app.use(express.json());
 
 //* Routes
+//* Route for Users
 app.use('/', userRoute);
 
 //* Route for Project Template (create a project);
-app.use('/api/projects', projectRoutes);
+app.use('/api/project', createProject);
+
+//* Route for Project for Home Page dropdown menu
+app.use('api/project', projectRoutes);
 
 //* 404 not found error
 app.use((req: Request, res: Response) => {
