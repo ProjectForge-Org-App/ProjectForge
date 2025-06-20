@@ -19,6 +19,7 @@ export default function NewProjectForm() {
     e.preventDefault();
     try {
       const result = await createProject({
+        _id: '',
         projectName,
         language,
         frontend,

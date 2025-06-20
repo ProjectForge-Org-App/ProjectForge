@@ -18,19 +18,20 @@ const ProjectSummaryPage: React.FC = () => {
 
   useEffect(() => {
     if (!projectName) {
-      navigate('/');
+      navigate('/home');
       return;
     }
 
     const loadProject = async () => {
       try {
         const data = await fetchProjectByName(decodeURIComponent(projectName));
-        setProject(data.project);
+        console.log('API returned:', data);
+        setProject(data);
         setDocumentation(data.documentation || []);
         setResumeBullets(data.resumeBullets || []);
       } catch (err) {
         console.error('Error fetching project:', err);
-        navigate('/');
+        navigate('/home');
       }
     };
 
