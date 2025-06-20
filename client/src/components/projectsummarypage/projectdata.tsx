@@ -287,6 +287,7 @@ const ProjectSummaryPage: React.FC = () => {
       <div className={styles.button} style={{ justifyContent: 'flex-end' }}>
         <button onClick={() => console.log('Delete project')}>Delete Project</button>
       </div>
+      
     </div>
   );
 };
